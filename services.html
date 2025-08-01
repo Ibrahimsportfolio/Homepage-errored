@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <link rel="stylesheet" href="global.css">
+ <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;700&display=swap"
+    rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    crossorigin="anonymous" />
+
+
+  <style>
+    .stars {
+      width: 1px;
+      height: 1px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-shadow:
+        50px 60px white, -100px -150px white, 200px 100px white, -250px 200px white, 150px -200px white,
+        -300px 50px white, 120px 250px white, -150px 100px white, 180px -180px white, -180px 150px white,
+        300px -100px white, -250px -200px white, 100px -250px white, -300px -150px white, 250px 200px white,
+        80px 120px white, -90px 170px white, 130px -130px white, -140px -90px white, 160px 190px white,
+        -70px -70px white, 140px 180px white, -160px 130px white, 90px -180px white, 190px -60px white,
+        -120px 200px white, 300px 100px white, -260px 80px white, 100px 160px white, -180px -120px white,
+        160px 60px white, -60px -150px white, 140px -160px white, -170px 170px white, 200px 120px white,
+        -210px -210px white, 220px 80px white, -230px 90px white, 240px -60px white, -250px -70px white,
+        260px 100px white, -270px -100px white, 280px -80px white, -290px 70px white, 300px -90px white,
+        -310px 60px white, 320px 110px white, -330px -110px white, 340px 90px white, -350px 50px white,
+        360px -120px white, -370px 130px white, 380px -140px white, -390px 140px white, 400px -150px white,
+        -410px 160px white, 420px -170px white, -430px 180px white, 440px -190px white, -450px 200px white,
+        460px -210px white, -470px 220px white, 480px -230px white, -490px 240px white, 500px -250px white,
+        -510px 260px white, 520px -270px white, -530px 280px white, 540px -290px white, -550px 300px white,
+        560px -310px white, -570px 320px white, 580px -330px white, -590px 340px white, 600px -350px white;
+
+      animation: zoom 4s linear infinite;
+    }
+
+    @keyframes zoom {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+
+
+
+    .glow {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at top right, rgba(255, 77, 0, 0.6), transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+
+
+    .hero h1 {
+      font-family: 'Orbitron', sans-serif;
+      padding: 50px;
+      padding-bottom: 0px;
+      background: transparent;
+      font-size: 30px;
+    }
+
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      border-radius: 12px;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .subheading {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--theme-color);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      opacity: 0;
+    }
+
+    #headline {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0 auto 2rem;
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .orange {
+      color: var(--theme-color);
+    }
+
+    #paragraph {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      font-size: 1.3rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 70px auto;
+      padding-left: 3rem;
+      opacity: 0;
+      color: rgba(241, 241, 241, 0.9);
+    }
+
+
+    @media (max-width: 768px) {
+      .hero-container {
+        padding: 5rem 1.5rem;
+      }
+
+      #paragraph {
+        padding-left: 0;
+        font-size: 1rem;
+      }
+
+
+    }
+
+.content-item h3{
+  margin-bottom :15px;  font-size: 1.5rem;
+}
+.content-item  p{
+    font-family: 'Archivo', sans-serif;
+}
+
+      .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+        }
+        
+      .video-card {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      padding: 50px;
+      clip-path: path('M 0% 20% Q 0% 0%, 10% 0% H 30% Q 35% 0%, 37% 5% Q 39% 10%, 44% 10% H 100% V 100% H 0% Z');
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: inherit;
+      border-radius: 40px;
+    }
+        
+        
+
+        .split-container {
+      display: flex;
+      position: relative;
+    }
+
+    .image-panel {
+      width: 50vw;
+      height: 100vh;
+      overflow: hidden;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      
+    }
+
+    .image-panel img {
+      position: absolute;
+      border-radius: 20px;
+      pointer-events: none;
+      width: 400px;
+    }
+
+    .content-panel {
+      width: 50vw;
+      padding: 0 4vw;
+    }
+
+    .content-block {
+      margin: 0;
+      padding: 20vh 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      
+    }
+
+    .content-item {
+      max-width: 90%;
+     
+    }
+   .content-item p{
+    font-family: 'M PLUS 2', sans-serif; 
+   }
+ 
+     .scroll-section {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+
+
+        .scroll-section--pinned {
+            background-color: var(--theme-color);
+            position: relative;
+        }
+
+      
+  .pin-section {
+      height: 100vh;
+      position: relative;
+      background-color:#d66700;
+      color: black;
+      font-family: 'Noto Sans Thaana', sans-serif;
+                                                
+    }
+
+    .pin-inner {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .pin-heading{
+      font-size: 50px;
+      opacity: 0;
+      letter-spacing: -2px;
+      transform: translateY(60px);
+      max-width: 1100px;
+    }
+
+    .pin-subheading {
+      font-size: 1.5vw;
+      opacity: 0;
+      transform: translateY(60px);
+      margin-top: 1.5rem;
+      color: #111;
+      font-family: 'M PLUS 2', sans-serif; 
+    }
+
+    @media (max-width: 768px) {
+      .pin-heading {
+        font-size: 7vw;
+      }
+
+      .pin-subheading {
+        font-size: 4vw;
+      }
+    }
+
+    .cta{
+      background-color: #ff7a00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: 'Noto Sans Thaana', sans-serif;
+                                                
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
+      text-decoration: none;
+    }
+
+    .cta:hover {
+      background-color: #e66a00;
+    }
+  </style>
+</head>
+
+
+<body data-barba="wrapper">
+  <div class="loader" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #ff6a00;
+  z-index: 9999;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+"></div>
+
+  <div data-barba="container" data-barba-namespace="services">
+  <header>
+    <!-- Bottom Nav -->
+    <div class="bottom-nav">
+      <div class="socials">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Fullscreen Overlay Menu -->
+    <div class="menu-overlay" id="menu">
+      <img class="menu-img1" style="position: absolute;
+    top:-10px;left:50px;border-radius: 20px; width:300px; height: 400px;"
+        src="https://i.pinimg.com/736x/dd/99/67/dd9967aca630dfbf75181ae843ac712b.jpg" alt="">
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="#">Contact</a>
+      </div>
+      <img class="menu-img2" style="position: absolute;
+    bottom:-10px;right:50px;border-radius: 20px; width:300px; height: 400px;"
+        src="https://i.pinimg.com/736x/c6/42/fe/c642fec9c2326a5408e851306b1e8a49.jpg" alt="">
+    </div>
+  </header>
+
+
+
+
+  <section class="hero">
+
+    <div class="stars"></div>
+    <div class="glow"></div>
+    <h1>WebGrowWnin</h1>
+    <div class="hero-container">
+      <p class="subheading">Systems That Convert</p>
+
+      <h2 id="headline">
+        Services Built to <span class="orange">Help You Get Clients</span><br> — Not Just Traffic
+      </h2>
+   
+      <p class="paragraph" id="paragraph">
+        Every offer we provide is designed with one goal: to grow your business. Whether you need a new website, better lead follow-up, or systems that run on autopilot — we’ve got you covered.
+
+      </p>
+       <button class="cta">Book a Free Strategy Call</button>
+    </div>
+
+    </div>
+    <section class="video-container">
+      <div class="video-card">
+        <video autoplay loop muted src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+      </div>
+    </section>
+    
+ <section class="pin-section">
+    <div class="pin-inner">
+      <h2 class="pin-heading"> Digital Growth Systems for Service Providers Who Want More Clients</h2>
+      <h3 class="pin-subheading"> Whether you're just starting or ready to scale, here’s how we help:</h3>
+    </div>
+  </section>
+
+     <div class="split-container" id="mainSplitContainer">
+    <div class="image-panel" id="fixedImagePanel">
+      <img src="envato-labs-ai-d2e9d622-951d-4063-884b-bd20b6c432e1-300x300.jpg" id="image-0">
+      <img src="envato-labs-image-edit-300x300.png" id="image-1">
+      <img src="envato-labs-ai-d2e9d622-951d-4063-884b-bd20b6c432e1-300x300.jpg" id="image-2">
+      <img src="envato-labs-image-edit-300x300.png" id="image-3">
+      <img src="envato-labs-ai-d2e9d622-951d-4063-884b-bd20b6c432e1-300x300.jpg" id="image-4">
+      <img src="envato-labs-image-edit-300x300.png" id="image-5">
+    </div>
+    <div class="content-panel">
+      <div class="content-block"><div class="content-item"><h3>1. Website Design & Redesign
+
+      </h3><p>"Your website isn’t a brochure. It’s your 24/7 salesperson." <br>
+        <br>
+        We design beautiful, high-converting websites that build trust and drive action — fast loading, mobile-friendly, and optimized for leads.
+      </p>
+     <button class="cta">Book a Free Strategy Call</button> 
+    </div></div>
+
+      <div class="content-block"><div class="content-item"><h3>2.  Email Automation Systems
+</h3><p>"You shouldn’t be manually chasing leads." <br>
+  <br> We build fully automated email systems — welcome flows, follow-ups, reminders, review requests — all tailored to your business and synced with your tools.
+
+</p>
+ <button class="cta">Book a Free Strategy Call</button>
+</div></div>
+      <div class="content-block"><div class="content-item"><h3>3.  Lead Funnels & Booking Systems</h3><p>"Make it easy for people to say yes." 
+        <br>
+        <br> We design landing pages and booking funnels that do the hard work for you — lead magnets, opt-ins, automated scheduling, and CRM integration.
+
+        
+      </p>
+     <button class="cta">Book a Free Strategy Call</button>
+    </div></div>
+      <div class="content-block"><div class="content-item"><h3>4. SEO Optimization
+</h3><p>"People are searching. You just need to show up."
+<br><br>
+We optimize your website and local presence so your dream clients can find you on Google. From on-page SEO to GMB (Google Business Profile) setup — we handle it all.
+
+        
+      </p>
+     <button class="cta">Book a Free Strategy Call</button>
+    </div></div>
+      <div class="content-block"><div class="content-item"><h3>5.  Chatbots & Lead Capture</h3><p>"Turn visitors into conversations, even while you sleep." <br>
+        <br>
+We install smart chatbots that greet visitors, qualify leads, and book calls — so you're never missing out, even if you’re off the clock.
+ </p>
+ <button class="cta">Book a Free Strategy Call</button>
+</div></div>
+
+      <div class="content-block"><div class="content-item"><h3>6. One-Page Funnels (Budget-Friendly)</h3><p>"Perfect for pre-launch, beta services, or tight budgets."
+        <br>
+        <br>
+If you're just starting out or need to test your offer, our single-page funnel system gives you everything you need to collect leads and book calls — fast.
+
+        
+      </p>
+     <button class="cta">Book a Free Strategy Call</button>
+    </div></div>
+    </div>
+  </div>
+
+  
+   <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__overlay"></div>
+    <div class="footer__container">
+      <div class="footer__cta">
+        <div class="infinite-scroll-banner">
+          <div class="infinite-scroll-text" id="infiniteScrollText">
+            DISCUSS NEW PROJECT • GET IN TOUCH • SAY HELLO • DISCUSS NEW PROJECT • GET IN TOUCH • SAY HELLO •
+          </div>
+        </div>
+      </div>
+      <div class="footer__links">
+        <h4>Mouno Links</h4>
+        <ul>
+          <li><a href="#">Face book</a></li>
+          <li><a href="#">Dribbble</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Behance</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <div>
+          <h4>Our studio address</h4>
+          <p>213 Marina Street, Los Angeles<br>USA, 665432</p>
+        </div>
+        <div>
+          <h4>Send email</h4>
+          <p><a style="text-decoration: NONE;color:  #ff7a00;"
+              href="mailto:office@mounostudio.com">office@mounostudio.com</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© WEBG 2025. All rights reserved, <a href="#"></a></p>
+
+      ⬆️
+    </div>
+    </div>
+  </footer>
+
+
+
+
+</div>
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="barba.js"></script>
+    <!-- Then Lenis -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  
+    <!-- Then other dependencies -->
+    <script src="https://unpkg.com/split-type"></script>
+ <script src="global.js"></script>
+
+    <script>
+      // Menu functionality
+      
+      function setuphero() {
+        // GSAP Animation Timeline
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        tl.fromTo('.subheading',
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.8 }
+        )
+          .fromTo('#headline',
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.8 },
+            "-=0.4"
+          )
+         
+          .fromTo('#paragraph',
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.8 },
+            "-=0.4"
+          );
+
+       
+      }
+
+      function setup() {
+ // Select the video container
+        const videoContainer = document.querySelector('.video-container');
+        const videoCard = document.querySelector('.video-card');
+        const video = document.querySelector('video');
+        
+        // Set up the animation timeline
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: videoContainer,
+                start: "top top", // When top of video hits top of viewport
+                end: "+=100%", // Scroll distance to complete animation
+                scrub: 1, // Smooth scrubbing (1 second delay)
+                pin: true, // Pin the video container while animating
+                anticipatePin: 1,
+              
+            }
+        });
+        
+        // Zoom in animation
+        tl.fromTo(videoCard, 
+            { scale: 1 },
+            { scale: 10, duration: 2 }
+        );
+        
+        // Optional: Add fade out at the end
+        tl.to(videoContainer, {
+            opacity: 0,
+            duration: 0.5,
+            onComplete: () => {
+                // Ensure pin is released
+                ScrollTrigger.refresh();
+            }
+        });
+      }
+
+    function services() {
+      
+    const contentBlocks = document.querySelectorAll(".content-block");
+    const allImages = document.querySelectorAll(".image-panel img");
+    const imagePanel = document.getElementById("fixedImagePanel");
+
+    // Pin the image panel
+    ScrollTrigger.create({
+      trigger: "#mainSplitContainer",
+      start: "top top",
+      endTrigger: contentBlocks[contentBlocks.length - 1],
+      end: "center center", // unpin when last content block reaches center
+      pin: imagePanel,
+      pinSpacing: false
+    });
+
+    let activeImageIndex = 0;
+
+    function displayImage(index) {
+      if (index === activeImageIndex) return;
+
+      const previousImage = allImages[activeImageIndex];
+      const nextImage = allImages[index];
+
+      gsap.to(previousImage, {
+        y: 100,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      });
+
+      gsap.set(nextImage, { y: 100, opacity: 0 });
+      gsap.to(nextImage, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out"
+      });
+
+      activeImageIndex = index;
+    }
+
+    contentBlocks.forEach((block, i) => {
+      ScrollTrigger.create({
+        trigger: block,
+        start: "top center",
+        end: "bottom center",
+        onEnter: () => displayImage(i),
+        onEnterBack: () => displayImage(i),
+      });
+    });
+
+    // Initial setup: hide all and show first
+    allImages.forEach(img => gsap.set(img, { opacity: 0, y: 100 }));
+    gsap.set(allImages[0], { opacity: 1, y: 0 });
+    }
+ function setuppPinsection(){
+    // Pin the entire section
+    ScrollTrigger.create({
+      trigger: ".pin-section",
+      start: "top top",
+      end: "+=150%",
+      pin: true,
+      anticipatePin: 1,
+    });
+
+    // Timeline for smooth sequence animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".pin-section",
+        start: "top top",
+        end: "+=150%",
+        scrub: true,
+      }
+    });
+
+    // Animate heading first
+    tl.to(".pin-heading", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    })
+    // Then animate subheading after some scroll
+    .to(".pin-subheading", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    }, ">+0.5");
+  }
+      // Initialize all page animations
+      function initPageAnimations() {
+        setupMenu();
+        setuphero();
+        setup();
+         setuppPinsection();
+        services();
+        setupFooterAnimations();
+       
+      }
+
+
+
+      // Initialize animations on first page load
+      document.addEventListener("DOMContentLoaded", () => {
+        initPageAnimations();
+      });
+
+
+    </script>
+
+
+</body>
+
+</html>

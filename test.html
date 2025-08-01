@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work Section</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --theme-color: #ff6a00;
+      --bg-color: #000000;
+      --bg-color-2: #0a0a0a;
+      --text-color: #f1f1f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      font-family: sans-serif;
+      color: var(--text-color);
+      overflow-x: hidden;
+    }
+
+    .our-work-section {
+      padding: 4rem 2rem;
+    }
+
+    .category-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .category-card {
+      flex: 0 0 auto;
+      width: 160px;
+      height: 80px;
+      background: var(--bg-color-2);
+      border: 2px solid var(--theme-color);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+    }
+
+    .category-card img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .category-name {
+      flex: 1;
+      padding: 0 0.5rem;
+      text-align: center;
+    }
+
+    .main-work-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      transition: all 0.5s ease;
+    }
+
+    .work-card {
+      background: var(--bg-color-2);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 106, 0, 0.3);
+      transform: scale(0.9);
+      opacity: 0;
+    }
+
+    .work-card.show {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .work-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .work-card-content {
+      padding: 1rem;
+    }
+
+    .work-card-content h3 {
+      color: var(--theme-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--theme-color);
+      color: var(--bg-color);
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.122);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .popup.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-content {
+      background: var(--bg-color-2);
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 90%;
+      color: var(--text-color);
+    }
+    /* Scrollbar Styling */
+.category-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: var(--bg-color-2);
+  border-radius: 10px;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--theme-color);
+  border-radius: 10px;
+  border: 2px solid var(--bg-color-2);
+}
+
+/* For Firefox */
+.category-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-color) var(--bg-color-2);
+}
+
+  </style>
+</head>
+
+<body>
+  <section class="our-work-section">
+    <div class="category-scroll" id="categories"></div>
+    <div class="main-work-cards" id="main-cards"></div>
+  </section>
+
+  <div class="popup" id="popup">
+    <div class="popup-content" id="popup-content">
+      <p>Popup Content</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    const categories = [
+      { name: 'Web', image: 'https://via.placeholder.com/80x160' },
+      { name: 'App', image: 'https://via.placeholder.com/80x160' },
+      { name: 'Design', image: 'https://via.placeholder.com/80x160' },
+      { name: 'AI', image: 'https://via.placeholder.com/80x160' },
+      { name: 'Branding', image: 'https://via.placeholder.com/80x160' },
+      { name: 'funnel', image: 'https://via.placeholder.com/80x160' },
+      { name: 'Other', image: 'https://via.placeholder.com/80x160' },
+    ];
+
+    const works = {
+      Web: [
+        { title: 'Website 1', img: 'https://via.placeholder.com/600x300', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'Website 2', img: 'https://via.placeholder.com/600x300', tags: ['React', 'API', 'UI'] },
+        { title: 'Website 3', img: 'https://via.placeholder.com/600x300', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      App:[
+        { title: 'HEADINGS TAB 2', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'HEADINGS TAB 2', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'HEADINGS TAB 2', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      Design: [
+        { title: 'HEADINGS TAB 3', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'HEADINGS TAB 3', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'HEADINGS TAB 3', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      AI: [
+        { title: 'HEADINGS TAB 4', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'HEADINGS TAB 4', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'HEADINGS TAB 4', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      Branding: [
+        { title: 'Website 5', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'Website 5', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'Website 5', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      Other: [
+        { title: 'Website 6', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'Website 6', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'Website 6', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      funnel: [
+        { title: 'Website 7', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['HTML', 'CSS', 'GSAP'] },
+        { title: 'Website 7', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['React', 'API', 'UI'] },
+        { title: 'Website 7', img: 'https://tse4.mm.bing.net/th/id/OIP.cgrJbdHSEJY3c54z2j0TggHaEw?r=0&rs=1&pid=ImgDetMain&o=7&rm=3', tags: ['Animation', 'JS', 'Modern'] },
+      ],
+      
+    };
+
+    const categoryContainer = document.getElementById('categories');
+    const mainCards = document.getElementById('main-cards');
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-content');
+
+    categories.forEach(cat => {
+      const card = document.createElement('div');
+      card.className = 'category-card';
+      card.innerHTML = `<img src="${cat.image}"/><div class="category-name">${cat.name}</div>`;
+      card.onclick = () => renderWorks(cat.name);
+      categoryContainer.appendChild(card);
+    });
+
+    function renderWorks(category) {
+      mainCards.innerHTML = '';
+      const items = works[category] || [];
+      items.forEach((item, i) => {
+        const card = document.createElement('div');
+        card.className = 'work-card';
+        card.innerHTML = `
+          <img src="${item.img}" />
+          <div class="work-card-content">
+            <h3>${item.title}</h3>
+            <div class="tags">${item.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+          </div>
+        `;
+        card.addEventListener('click', () => {
+          popupContent.innerHTML = `<h2>${item.title}</h2><img src='${item.img}' style='width:100%; margin-top:1rem;'><p style='margin-top:1rem;'>Tags: ${item.tags.join(', ')}</p>`;
+          popup.classList.add('active');
+        });
+        mainCards.appendChild(card);
+        gsap.to(card, {
+          delay: i * 0.2,
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: 'power3.out',
+          onStart: () => card.classList.add('show')
+        });
+      });
+    }
+
+    popup.onclick = () => popup.classList.remove('active');
+
+    // Initial render
+    renderWorks('Web');
+  </script>
+</body>
+
+</html>
